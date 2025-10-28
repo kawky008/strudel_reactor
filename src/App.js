@@ -40,14 +40,14 @@ export function Proc(
         steps, BPM, 
         // drums
         dBank, dFast, dSlow, dGain, dLinger,
-        bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct
+        bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct, htStruct, rdStruct, crStruct
     ) {
     const tuneText = MyTunes({
         // global settings
         steps, BPM, 
         // drums
         dBank, dFast, dSlow, dGain, dLinger,
-        bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct
+        bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct, htStruct, rdStruct, crStruct
     });
 
     globalEditor.setCode(tuneText);
@@ -72,7 +72,7 @@ export default function() {
             steps, BPM, 
             // drums
             dBank, dFast, dSlow, dGain, dLinger,
-            bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct
+            bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct, htStruct, rdStruct, crStruct
         );
     };
 
@@ -138,6 +138,9 @@ export default function() {
     const [rimStruct, setRimStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [ltStruct, setLtStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [mtStruct, setMtStruct] = useState(Array(steps * 4).fill("~").join(" "));
+    const [htStruct, setHtStruct] = useState(Array(steps * 4).fill("~").join(" "));
+    const [rdStruct, setRdStruct] = useState(Array(steps * 4).fill("~").join(" "));
+    const [crStruct, setCrStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [bdStruct, setBdStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [dBank, setDBank] = useState("RolandTR909");
     const [dFast, setDFast] = useState(1);
@@ -178,6 +181,12 @@ export default function() {
                 ltStruct={ltStruct} setLtStruct={setLtStruct}
                 // middle tom
                 mtStruct={mtStruct} setMtStruct={setMtStruct}
+                // high tom
+                htStruct={htStruct} setHtStruct={setHhStruct}
+                // ride cymbal
+                rdStruct={rdStruct} setRdStruct={setRdStruct}
+                // crash cymbal
+                crStruct={crStruct} setCrStruct={setCrStruct}
                 // settings
                 steps={steps}
                 dBank={dBank} setDBank={setDBank}

@@ -3,7 +3,7 @@ export function MyTunes({
     steps, BPM, 
     // drums
     dBank, dFast, dSlow, dGain, dLinger,
-    bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct
+    bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct, htStruct, rdStruct, crStruct
 }) {
     return `
     setcps(${BPM}/60)
@@ -16,6 +16,9 @@ export function MyTunes({
         s("${rimStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
         s("${ltStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
         s("${mtStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
+        s("${htStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
+        s("${rdStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
+        s("${crStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
         s("${bdStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
     )`
 }
