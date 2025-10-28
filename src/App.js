@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect, useRef } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
-import { evalScope } from '@strudel/core';
+import { evalScope, set } from '@strudel/core';
 import { drawPianoroll } from '@strudel/draw';
 import { initAudioOnFirstClick } from '@strudel/webaudio';
 import { transpiler } from '@strudel/transpiler';
@@ -40,14 +40,14 @@ export function Proc(
         steps, BPM, 
         // drums
         dBank, dFast, dSlow, dGain, dLinger,
-        bdStruct, hhStruct, sdStruct
+        bdStruct, hhStruct, sdStruct, rimStruct
     ) {
     const tuneText = MyTunes({
         // global settings
         steps, BPM, 
         // drums
         dBank, dFast, dSlow, dGain, dLinger,
-        bdStruct, hhStruct, sdStruct
+        bdStruct, hhStruct, sdStruct, rimStruct
     });
 
     globalEditor.setCode(tuneText);
@@ -72,7 +72,7 @@ export default function() {
             steps, BPM, 
             // drums
             dBank, dFast, dSlow, dGain, dLinger,
-            bdStruct, hhStruct, sdStruct
+            bdStruct, hhStruct, sdStruct, rimStruct
         );
     };
 
@@ -135,6 +135,7 @@ export default function() {
     const [bdStruct, setBdStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [hhStruct, setHhStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [sdStruct, setSdStruct] = useState(Array(steps * 4).fill("~").join(" "));
+    const [rimStruct, setRimStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [dBank, setDBank] = useState("RolandTR909");
     const [dFast, setDFast] = useState(1);
     const [dSlow, setDSlow] = useState(1);
@@ -166,6 +167,8 @@ export default function() {
                 hhStruct={hhStruct} setHhStruct={setHhStruct}
                 // snare drum
                 sdStruct={sdStruct} setSdStruct={setSdStruct}
+                // rim shot
+                rimStruct={rimStruct} setRimStruct={setRimStruct}
                 // settings
                 steps={steps}
                 dBank={dBank} setDBank={setDBank}
