@@ -3,21 +3,19 @@ export function MyTunes({
     steps, BPM, 
     // drums
     dBank, dFast, dSlow, dGain, dLinger,
-    bdStruct, hhStruct, sdStruct, rimStruct
+    bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct
 }) {
     return `
     setcps(${BPM}/60)
-
-    samples('https://raw.githubusercontent.com/Mittans/tidal-drum-machines/main/machines/tidal-drum-machines.json')
-    
+    samples('https://raw.githubusercontent.com/Mittans/tidal-drum-machines/main/machines/tidal-drum-machines.json')    
     drums:
     stack(
         s("${hhStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
-
+        s("${ohStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
         s("${sdStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
-
-        s("${rimStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast},
-        
+        s("${rimStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
+        s("${ltStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
+        s("${mtStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
         s("${bdStruct}").bank("${dBank}").gain(${dGain}).fast(${dFast}),
     )`
 }

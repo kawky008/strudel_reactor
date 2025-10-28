@@ -40,14 +40,14 @@ export function Proc(
         steps, BPM, 
         // drums
         dBank, dFast, dSlow, dGain, dLinger,
-        bdStruct, hhStruct, sdStruct, rimStruct
+        bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct
     ) {
     const tuneText = MyTunes({
         // global settings
         steps, BPM, 
         // drums
         dBank, dFast, dSlow, dGain, dLinger,
-        bdStruct, hhStruct, sdStruct, rimStruct
+        bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct
     });
 
     globalEditor.setCode(tuneText);
@@ -72,7 +72,7 @@ export default function() {
             steps, BPM, 
             // drums
             dBank, dFast, dSlow, dGain, dLinger,
-            bdStruct, hhStruct, sdStruct, rimStruct
+            bdStruct, hhStruct, sdStruct, rimStruct, ohStruct, ltStruct, mtStruct
         );
     };
 
@@ -132,10 +132,13 @@ export default function() {
     const [BPM, setBPM] = useState(60)
 
     // drums
-    const [bdStruct, setBdStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [hhStruct, setHhStruct] = useState(Array(steps * 4).fill("~").join(" "));
+    const [ohStruct, setOhStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [sdStruct, setSdStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [rimStruct, setRimStruct] = useState(Array(steps * 4).fill("~").join(" "));
+    const [ltStruct, setLtStruct] = useState(Array(steps * 4).fill("~").join(" "));
+    const [mtStruct, setMtStruct] = useState(Array(steps * 4).fill("~").join(" "));
+    const [bdStruct, setBdStruct] = useState(Array(steps * 4).fill("~").join(" "));
     const [dBank, setDBank] = useState("RolandTR909");
     const [dFast, setDFast] = useState(1);
     const [dSlow, setDSlow] = useState(1);
@@ -169,6 +172,12 @@ export default function() {
                 sdStruct={sdStruct} setSdStruct={setSdStruct}
                 // rim shot
                 rimStruct={rimStruct} setRimStruct={setRimStruct}
+                // open hihat
+                ohStruct={ohStruct} setOhStruct={setOhStruct}
+                // low tom
+                ltStruct={ltStruct} setLtStruct={setLtStruct}
+                // middle tom
+                mtStruct={mtStruct} setMtStruct={setMtStruct}
                 // settings
                 steps={steps}
                 dBank={dBank} setDBank={setDBank}
