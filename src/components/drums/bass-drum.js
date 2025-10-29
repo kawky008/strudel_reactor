@@ -1,59 +1,43 @@
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-import { useState, useEffect, useRef } from "react";
+import { useDrumStore } from "../../stores/use-drum-store.js";
 
-export default function BassDrum({bdStruct, setBdStruct, steps}) {
-    const [struct, setStruct] = useState(Array(steps * 4).fill("~"));
+export default function BassDrum() {
+    // get drum settings
+    const { struct, play, gain } = useDrumStore((state) => state.drums.bass_drum);
+    const updateDrum = useDrumStore((state) => state.updateDrum);
 
-    // add or remove one 16th note
-    function toggleNote(index) {
-        setStruct(prev => {
-            const newStr = [...prev];
-            newStr[index] = prev[index] === "bd" ? "~" : "bd";
-            return newStr;
-        });
-    }    
-    // update bass struct when toggleNote is called
-    useEffect(() => {
-        setBdStruct(struct.join(" "));
-    }, [struct]);
-
-    const svgRef = useRef();
-
-    const width = 25;
-    const height = 50
-
-    useEffect(() => {
-        const svg = d3.select(svgRef.current);
-
-        // calculate x y coordinates
-        const sequence = [];
-        struct.forEach((value, i) => {
-            sequence.push({ index: i, note: value })
-        })
-
-        // data binding
-        const rects = svg.selectAll("rect").data(sequence, d => d.index);
-
-        // existing notes
-        rects.attr("fill", d => (d.note === "bd" ? "white" : "#171717ff"));
-
-        // new note
-        rects.enter()
-        .append("rect")
-        .attr("x", d => (d.index * width))
-        .attr("y", 0)
-        .attr("width", width)
-        .attr("height", height)
-        .attr("fill", d => (d.note === "bd" ? "white" : "#171717ff"))
-        .attr("stroke", "#797979ff")
-        .attr("cursor", "pointer")
-        .on("click", (event, d) => {toggleNote(d.index)});
-
-        rects.exit().remove();
-
-    }, [struct]);
+    const toggleNote = (index) => {
+        const newStruct = [...struct];
+        newStruct[index] = struct[index] === "bd" ? "~" : "bd";
+        updateDrum("bass_drum", { struct: newStruct });
+    };
 
     return (
-        <svg ref={svgRef} width={struct.length * width} height={height} />
-    )
-}
+        <div style={{ marginBottom: "1rem" }}>
+            <div style={{ display: "flex", gap: "2px" }}>
+                {struct.map((note, i) => (
+                <div
+                    key={i}
+                    onClick={() => toggleNote(i)}
+                    style={{
+                    width: 25,
+                    height: 50,
+                    backgroundColor: note === "bd" ? "white" : "#171717",
+                    border: "1px solid #797979",
+                    cursor: "pointer",
+                    transition: "background-color 0.15s",
+                    }}
+                />
+                ))}
+            </div>
+            <div
+                style={{
+                marginTop: "0.3rem",
+                fontSize: "0.8rem",
+                color: play ? "lime" : "gray",
+                }}
+            >
+                Gain: {gain.toFixed(2)}
+            </div>
+        </div>
+    );
+    }

@@ -1,5 +1,4 @@
 
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { useState, useEffect, useRef } from "react";
 import Hihat from "./hihat";
 import OpenHihat from "./open-hihat";
@@ -12,34 +11,7 @@ import BassDrum from "./bass-drum";
 import RideCymbal from "./ride-cymbal";
 import CrashCymbal from "./crash-cymbal";
 
-export default function DrumSequencer({
-    // bass drum
-    bdStruct, setBdStruct, 
-    // hihat
-    hhStruct, setHhStruct,
-    // snare drum
-    sdStruct, setSdStruct,
-    // rim shot
-    rimStruct, setRimStruct,
-    // open hihat
-    ohStruct, setOhStruct,
-    // low tom
-    ltStruct, setLtStruct,
-    // middle tom
-    mtStruct, setMtStruct,
-    // high tom
-    htStruct, setHtStruct,
-    // ride cymbal
-    rdStruct, setRdStruct,
-    // crash cymbal
-    crStruct, setCrStruct,
-    // settings
-    steps, 
-    dPlay, setDPlay, 
-    dBank, setDBank,
-    dFast, setDFast,
-    dGain, setDGain}) {
-
+export default function DrumSequencer() {
     return (
         <div className="row justify-content-start align-content-start">
             <div className="col-4">
@@ -55,35 +27,35 @@ export default function DrumSequencer({
                 <div>Bass Drum</div>
             </div>
             <div className="col-8">
-                <div className="mt-3">
-                    <Hihat hhStruct={hhStruct} setHhStruct={setHhStruct} steps={steps} />
+                {/* <div className="mt-3">
+                    <Hihat />
                 </div>
                 <div className="mt-3">
-                    <OpenHihat ohStruct={ohStruct} setOhStruct={setOhStruct} steps={steps} />
+                    <OpenHihat />
                 </div>
                 <div className="mt-3">
-                    <SnareDrum sdStruct={sdStruct} setSdStruct={setSdStruct} steps={steps} />
+                    <SnareDrum />
                 </div>
                 <div className="mt-3">
-                    <RimShot rimStruct={rimStruct} setRimStruct={setRimStruct} steps={steps} />
+                    <RimShot />
                 </div>
                 <div className="mt-3">
-                    <LowTom ltStruct={ltStruct} setLtStruct={setLtStruct} steps={steps} />
+                    <LowTom />
                 </div>
                 <div className="mt-3">
-                    <MiddleTom mtStruct={mtStruct} setMtStruct={setMtStruct} steps={steps} />
+                    <MiddleTom />
                 </div>
                 <div className="mt-3">
-                    <HighTom htStruct={htStruct} setHtStruct={setHtStruct} steps={steps} />
+                    <HighTom />
                 </div>
                 <div className="mt-3">
-                    <RideCymbal rdStruct={rdStruct} setRdStruct={setRdStruct} steps={steps} />
+                    <RideCymbal />
                 </div>
                 <div className="mt-3">
-                    <CrashCymbal crStruct={crStruct} setCrStruct={setCrStruct} steps={steps} />
-                </div>
+                    <CrashCymbal />
+                </div> */}
                 <div className="mt-3">
-                    <BassDrum bdStruct={bdStruct} setBdStruct={setBdStruct} steps={steps} />
+                    <BassDrum />
                 </div>
             </div>
         </div>
