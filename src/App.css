@@ -44,6 +44,30 @@
   font-family:"Fira Code", Consolas, "Courier New", Courier, monospace;
 }
 
+.drum-settings {
+  width: 20rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background-color: #171717;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.drum-settings .name {
+  width: 6rem;
+}
+
+.drum-settings .mute-button {
+  width: 1rem;
+  cursor: pointer;
+}
+
+.drum-settings .mute-button:hover {
+  color: #e6e6e6;
+}
+
 .drum-bar {
   width: 1.5rem;
   height: 3rem;
