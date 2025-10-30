@@ -44,6 +44,9 @@
   font-family:"Fira Code", Consolas, "Courier New", Courier, monospace;
 }
 
-.instrument-settings {
-  padding: 5rem;
+.drum-bar {
+  width: 1.5rem;
+  height: 3rem;
+  border: 1px solid #797979;
+  cursor: pointer;
 }

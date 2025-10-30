@@ -12,32 +12,18 @@ export default function BassDrum() {
     };
 
     return (
-        <div style={{ marginBottom: "1rem" }}>
-            <div style={{ display: "flex", gap: "2px" }}>
-                {struct.map((note, i) => (
-                <div
-                    key={i}
-                    onClick={() => toggleNote(i)}
-                    style={{
-                    width: 25,
-                    height: 50,
-                    backgroundColor: note === "bd" ? "white" : "#171717",
-                    border: "1px solid #797979",
-                    cursor: "pointer",
-                    transition: "background-color 0.15s",
-                    }}
-                />
-                ))}
-            </div>
+        <div style={{ display: "flex", gap: "0.1rem" }}>
+            {struct.map((note, i) => (
             <div
+                key={i}
+                onClick={() => toggleNote(i)}
+                className="drum-bar"
                 style={{
-                marginTop: "0.3rem",
-                fontSize: "0.8rem",
-                color: play ? "lime" : "gray",
+                backgroundColor: note === "bd" ? "white" : "#171717",
+                transition: "background-color 0.10s",
                 }}
-            >
-                Gain: {gain.toFixed(2)}
-            </div>
+            />
+            ))}
         </div>
     );
     }

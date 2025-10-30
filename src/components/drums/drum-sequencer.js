@@ -27,7 +27,7 @@ export default function DrumSequencer() {
                 <div>Bass Drum</div>
             </div>
             <div className="col-8">
-                {/* <div className="mt-3">
+                <div className="mt-3">
                     <Hihat />
                 </div>
                 <div className="mt-3">
@@ -53,7 +53,7 @@ export default function DrumSequencer() {
                 </div>
                 <div className="mt-3">
                     <CrashCymbal />
-                </div> */}
+                </div>
                 <div className="mt-3">
                     <BassDrum />
                 </div>

@@ -3,9 +3,10 @@ import { useDrumStore } from "./stores/use-drum-store";
 
 
 export function MyTunes({BPM}) {
-    const state = useDrumStore.getState();
-    const drumStack = state.getDrumStr();
-    const bank = state.drums.settings.bank;
+    // drums
+    const drumState = useDrumStore.getState();
+    const drumStack = drumState.getDrumStr();
+    const bank = drumState.drums.settings.bank;
 
     return `
     setcps(${BPM}/60/4)
