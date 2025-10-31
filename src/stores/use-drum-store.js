@@ -3,6 +3,7 @@ import { create } from "zustand";
 export const useDrumStore = create((set, get) => ({
     drums: {
         settings: {
+            play: false,
             bank: "RolandTR808"
         },
         hihat: {
@@ -74,10 +75,12 @@ export const useDrumStore = create((set, get) => ({
     }
      */
 
+    if (!drums.settings.play) return "silence";
+
     const stack = Object.entries(drums)    // [["hh", {struct: [...], play: true, gain: 1}], ...]
         .filter(([name]) => name !== "settings")    // remove "settings"
         .map(([name, { struct, play, gain }]) => {
-        // mute
+        // mute track
         if (!play) {
             return `// ${name} muted`;
         };

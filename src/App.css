@@ -59,7 +59,7 @@
   border-radius: 0.2em;
   color: #cacaca;
   padding: 0.3rem;
-  box-shadow: 0 0 0.2rem 0.2rem #b853c150;
+  box-shadow: 0 0 0.2rem 0.25rem #b853c150;
   animation: glow 15s infinite alternate;
 }
 
@@ -79,7 +79,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  box-shadow: 0 0 0.2rem 0.2rem #b853c150;
+  box-shadow: 0 0 0.2rem 0.25rem #b853c150;
   animation: glow 15s infinite alternate;
 }
 
@@ -96,11 +96,11 @@
   color: #e6e6e6;
 }
 
-.fa-rotate-left {
+i {
   cursor: pointer;
 }
 
-.fa-rotate-left:hover {
+i:hover {
   color: #e6e6e6;
 }
 

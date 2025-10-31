@@ -8,10 +8,12 @@ import { evalScope } from '@strudel/core';
 import { initAudioOnFirstClick } from "@strudel/webaudio";
 import { MyTunes } from "../../my-tunes";
 import console_monkey_patch from "../../console-monkey-patch";
+import { useStrudelStore } from "../../stores/use-strudel-store";
 
 let globalEditor = null;
 
 export default function StrudelEditor({ BPM }) {
+    const setControls = useStrudelStore((state) => state.setControls);
     const hasRun = useRef(false);
 
     useEffect(() => {
@@ -58,10 +60,14 @@ export default function StrudelEditor({ BPM }) {
         const code = MyTunes({ BPM });
         globalEditor?.setCode(code);
     };
-    const handleProcAndPlay = () => {
-        handleProc();
-        handlePlay();
-    };
+
+    useEffect(() => {
+        setControls({
+            play: handlePlay,
+            stop: handleStop,
+            proc: handleProc,
+        });
+    }, [setControls, BPM])
 
     return (
         <div>
@@ -69,7 +75,6 @@ export default function StrudelEditor({ BPM }) {
         <canvas id="roll" style={{ border: "1px solid #ccc" }} />
         <div style={{ marginTop: "0.5rem" }}>
             <button onClick={handleProc}>Preprocess</button>
-            <button onClick={handleProcAndPlay}>Proc & Play</button>
             <button onClick={handlePlay}>Play</button>
             <button onClick={handleStop}>Stop</button>
         </div>
