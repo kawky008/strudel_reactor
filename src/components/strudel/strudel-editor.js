@@ -7,7 +7,7 @@ import { transpiler } from '@strudel/transpiler';
 import { evalScope } from '@strudel/core';
 import { initAudioOnFirstClick } from "@strudel/webaudio";
 import { MyTunes } from "../../my-tunes";
-import console_monkey_patch from "../../console-monkey-patch";
+import console_monkey_patch, { getD3Data } from "../../console-monkey-patch";
 import { useStrudelStore } from "../../stores/use-strudel-store";
 
 let globalEditor = null;
@@ -71,14 +71,15 @@ export default function StrudelEditor() {
 
     return (
         <div>
-        <textarea id="proc" rows="10" style={{ width: "100%" }} />
-        <canvas id="roll" style={{ border: "1px solid #ccc" }} />
-        <div style={{ marginTop: "0.5rem" }}>
-            <button onClick={handleProc}>Preprocess</button>
-            <button onClick={handlePlay}>Play</button>
-            <button onClick={handleStop}>Stop</button>
-        </div>
-        <div id="editor" />
+            <textarea id="proc" rows="10" style={{ width: "100%" }} hidden />
+            <canvas id="roll" style={{ border: "1px solid #ccc" }} hidden />
+            <div
+                id="editor"
+                style={{
+                textAlign: "left",
+                margin: "0 auto",
+                width: "85vw",
+            }}/>
         </div>
     );
     }
