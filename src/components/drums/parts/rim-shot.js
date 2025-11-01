@@ -1,31 +1,31 @@
-import { useDrumStore } from "../../stores/use-drum-store.js";
+import { useDrumStore } from "../../../stores/use-drum-store.js";
 
-export default function HighTom() {
+export default function RimShot() {
     // get drum settings
-    const { struct, play, gain } = useDrumStore((state) => state.drums.high_tom);
+    const { struct, play, gain } = useDrumStore((state) => state.drums.rim_shot);
     const updateDrum = useDrumStore((state) => state.updateDrum);
 
     const toggleNote = (index) => {
         const newStruct = [...struct];
-        newStruct[index] = struct[index] === "ht" ? "~" : "ht";
-        updateDrum("high_tom", { struct: newStruct });
+        newStruct[index] = struct[index] === "rim" ? "~" : "rim";
+        updateDrum("rim_shot", { struct: newStruct });
     };
 
     const reset = () => {
-        updateDrum("high_tom", { struct: Array(struct.length).fill("~") });
-        updateDrum("high_tom", { play: true });
-        updateDrum("high_tom", { gain: 1 });
+        updateDrum("rim_shot", { struct: Array(struct.length).fill("~") });
+        updateDrum("rim_shot", { play: true });
+        updateDrum("rim_shot", { gain: 1 });
     }
 
     return (
         <div style={{ display: "flex", gap: "1rem"}}>
             <div className="drum-settings">
-                <div className="name">High Tom</div>
+                <div className="name">Rim Shot</div>
 
                 {/* mute button */}
                 <div
                     className="mute-button"
-                    onClick={() => updateDrum("high_tom", { play: !play })}
+                    onClick={() => updateDrum("rim_shot", { play: !play })}
                 >
                     {play ? <i className="fa-solid fa-volume-high" /> : <i className="fa-solid fa-volume-xmark" /> }
                 </div>
@@ -38,7 +38,7 @@ export default function HighTom() {
                     max="1"
                     step="0.05"
                     value={gain}
-                    onChange={(e) => updateDrum("high_tom", { gain: parseFloat(e.target.value) })}
+                    onChange={(e) => updateDrum("rim_shot", { gain: parseFloat(e.target.value) })}
                 />
 
                 {/* reset button */}
@@ -52,7 +52,7 @@ export default function HighTom() {
                     onClick={() => toggleNote(i)}
                     className="drum-bar"
                     style={{
-                    backgroundColor: note === "ht" ? "white" : "#171717",
+                    backgroundColor: note === "rim" ? "white" : "#171717",
                     transition: "background-color 0.10s",
                     }}
                 />

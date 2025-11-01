@@ -11,9 +11,9 @@ export default function HeroBanner() {
             <div className="row">
                 <div className='col-3 texts'>
                     <div className="logo">
-                        <i class="fa-solid fa-bars" />
-                        <i class="fa-solid fa-bars fa-rotate-90" />
-                        <i class="fa-solid fa-bars" />
+                        <i className="fa-solid fa-bars" />
+                        <i className="fa-solid fa-bars fa-rotate-90" />
+                        <i className="fa-solid fa-bars" />
                     </div>
                     <div className="logo-text">Strudel Music Sequencer</div>
                 </div>

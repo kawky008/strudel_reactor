@@ -4,22 +4,34 @@ import StrudelEditor from './components/strudel/strudel-editor';
 import DrumSequencer from './components/drums/drum-sequencer';
 import HeroBanner from './components/hero-banner';
 import NavBar from './components/nav-bar';
+import GlobalSettings from './components/global-settings';
+import { set } from '@strudel/core';
 
-export default function App() {
-  // global settings
-  const [BPM, setBPM] = useState(120);
-  
+export default function App() { 
+  const [instrument, setInstrument] = useState("drums");
   return (
     <div className="App">
       <HeroBanner />
 
-      <NavBar />
+      <NavBar instrument={ instrument } setInstrument={ setInstrument } />
 
       <div className="sequencer">
-        <DrumSequencer />
+        {instrument === "drums" && (
+          <DrumSequencer />
+        )}
+        {instrument === "piano" && (
+          <>piano page</>
+        )}
+        {instrument === "guitar" && (
+          <>guitar page</>
+        )}
+        {instrument === "synths" && (
+          <>synths page</>
+        )}
       </div>
       
-      <StrudelEditor BPM={BPM} />
+      
+      <StrudelEditor />
     </div>
   );
 }

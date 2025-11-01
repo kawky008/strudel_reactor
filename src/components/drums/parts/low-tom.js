@@ -1,4 +1,4 @@
-import { useDrumStore } from "../../stores/use-drum-store.js";
+import { useDrumStore } from "../../../stores/use-drum-store.js";
 
 export default function LowTom() {
     // get drum settings

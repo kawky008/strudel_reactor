@@ -3,16 +3,16 @@ import { useState } from "react";
 import { useStrudelStore } from "../../stores/use-strudel-store";
 import { useDrumStore } from "../../stores/use-drum-store";
 import BankSelector from "./bank-selector";
-import Hihat from "./hihat";
-import OpenHihat from "./open-hihat";
-import SnareDrum from "./snare-drum";
-import RimShot from "./rim-shot";
-import LowTom from "./low-tom";
-import MiddleTom from "./middle-tom";
-import HighTom from "./high-tom";
-import BassDrum from "./bass-drum";
-import RideCymbal from "./ride-cymbal";
-import CrashCymbal from "./crash-cymbal";
+import Hihat from "./parts/hihat";
+import OpenHihat from "./parts/open-hihat";
+import SnareDrum from "./parts/snare-drum";
+import RimShot from "./parts/rim-shot";
+import LowTom from "./parts/low-tom";
+import MiddleTom from "./parts/middle-tom";
+import HighTom from "./parts/high-tom";
+import BassDrum from "./parts/bass-drum";
+import RideCymbal from "./parts/ride-cymbal";
+import CrashCymbal from "./parts/crash-cymbal";
 
 export default function DrumSequencer() {
     const { play, stop, proc } = useStrudelStore();
@@ -34,7 +34,7 @@ export default function DrumSequencer() {
                     {/* preprocess */}
                     <div className="col">
                         <i
-                            class="fa-solid fa-rotate-right"
+                            className="fa-solid fa-rotate-right"
                             onClick={(() => {
                                 updateDrum("settings", {play: true});
                                 proc?.();
@@ -72,7 +72,7 @@ export default function DrumSequencer() {
                     <div className="col">
                         {!playDrums ?
                             <i
-                                class="fa-solid fa-volume-xmark"
+                                className="fa-solid fa-volume-xmark"
                                 onClick={(() => {
                                     updateDrum("settings", {play: true});
                                     proc?.();
@@ -80,7 +80,7 @@ export default function DrumSequencer() {
                             />
                             :
                             <i
-                                class="fa-solid fa-volume-high"
+                                className="fa-solid fa-volume-high"
                                 onClick={(() => {
                                     updateDrum("settings", {play: false});
                                     proc?.();

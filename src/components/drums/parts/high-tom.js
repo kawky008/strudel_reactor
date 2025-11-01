@@ -1,31 +1,31 @@
-import { useDrumStore } from "../../stores/use-drum-store.js";
+import { useDrumStore } from "../../../stores/use-drum-store.js";
 
-export default function RideCymbal() {
+export default function HighTom() {
     // get drum settings
-    const { struct, play, gain } = useDrumStore((state) => state.drums.ride_cymbal);
+    const { struct, play, gain } = useDrumStore((state) => state.drums.high_tom);
     const updateDrum = useDrumStore((state) => state.updateDrum);
 
     const toggleNote = (index) => {
         const newStruct = [...struct];
-        newStruct[index] = struct[index] === "rd" ? "~" : "rd";
-        updateDrum("ride_cymbal", { struct: newStruct });
+        newStruct[index] = struct[index] === "ht" ? "~" : "ht";
+        updateDrum("high_tom", { struct: newStruct });
     };
 
     const reset = () => {
-        updateDrum("ride_cymbal", { struct: Array(struct.length).fill("~") });
-        updateDrum("ride_cymbal", { play: true });
-        updateDrum("ride_cymbal", { gain: 1 });
+        updateDrum("high_tom", { struct: Array(struct.length).fill("~") });
+        updateDrum("high_tom", { play: true });
+        updateDrum("high_tom", { gain: 1 });
     }
 
     return (
         <div style={{ display: "flex", gap: "1rem"}}>
             <div className="drum-settings">
-                <div className="name">Ride Cymbal</div>
+                <div className="name">High Tom</div>
 
                 {/* mute button */}
                 <div
                     className="mute-button"
-                    onClick={() => updateDrum("ride_cymbal", { play: !play })}
+                    onClick={() => updateDrum("high_tom", { play: !play })}
                 >
                     {play ? <i className="fa-solid fa-volume-high" /> : <i className="fa-solid fa-volume-xmark" /> }
                 </div>
@@ -38,7 +38,7 @@ export default function RideCymbal() {
                     max="1"
                     step="0.05"
                     value={gain}
-                    onChange={(e) => updateDrum("ride_cymbal", { gain: parseFloat(e.target.value) })}
+                    onChange={(e) => updateDrum("high_tom", { gain: parseFloat(e.target.value) })}
                 />
 
                 {/* reset button */}
@@ -52,7 +52,7 @@ export default function RideCymbal() {
                     onClick={() => toggleNote(i)}
                     className="drum-bar"
                     style={{
-                    backgroundColor: note === "rd" ? "white" : "#171717",
+                    backgroundColor: note === "ht" ? "white" : "#171717",
                     transition: "background-color 0.10s",
                     }}
                 />

@@ -1,31 +1,31 @@
-import { useDrumStore } from "../../stores/use-drum-store.js";
+import { useDrumStore } from "../../../stores/use-drum-store.js";
 
-export default function SnareDrum() {
+export default function Hihat() {
     // get drum settings
-    const { struct, play, gain } = useDrumStore((state) => state.drums.snare_drum);
+    const { struct, play, gain } = useDrumStore((state) => state.drums.hihat);
     const updateDrum = useDrumStore((state) => state.updateDrum);
 
     const toggleNote = (index) => {
         const newStruct = [...struct];
-        newStruct[index] = struct[index] === "sd" ? "~" : "sd";
-        updateDrum("snare_drum", { struct: newStruct });
+        newStruct[index] = struct[index] === "hh" ? "~" : "hh";
+        updateDrum("hihat", { struct: newStruct });
     };
 
     const reset = () => {
-        updateDrum("snare_drum", { struct: Array(struct.length).fill("~") });
-        updateDrum("snare_drum", { play: true });
-        updateDrum("snare_drum", { gain: 1 });
+        updateDrum("hihat", { struct: Array(struct.length).fill("~") });
+        updateDrum("hihat", { play: true });
+        updateDrum("hihat", { gain: 1 });
     }
 
     return (
         <div style={{ display: "flex", gap: "1rem"}}>
             <div className="drum-settings">
-                <div className="name">Snare Drum</div>
+                <div className="name">Hi-Hat</div>
 
                 {/* mute button */}
                 <div
                     className="mute-button"
-                    onClick={() => updateDrum("snare_drum", { play: !play })}
+                    onClick={() => updateDrum("hihat", { play: !play })}
                 >
                     {play ? <i className="fa-solid fa-volume-high" /> : <i className="fa-solid fa-volume-xmark" /> }
                 </div>
@@ -38,13 +38,13 @@ export default function SnareDrum() {
                     max="1"
                     step="0.05"
                     value={gain}
-                    onChange={(e) => updateDrum("snare_drum", { gain: parseFloat(e.target.value) })}
+                    onChange={(e) => updateDrum("hihat", { gain: parseFloat(e.target.value) })}
                 />
 
                 {/* reset button */}
                 <i className="fa-solid fa-trash ms-2" onClick={() => reset()} />
-                
             </div>
+
             <div style={{ display: "flex", gap: "0.1rem" }}>
                 {struct.map((note, i) => (
                 <div
@@ -52,7 +52,7 @@ export default function SnareDrum() {
                     onClick={() => toggleNote(i)}
                     className="drum-bar"
                     style={{
-                    backgroundColor: note === "sd" ? "white" : "#171717",
+                    backgroundColor: note === "hh" ? "white" : "#171717",
                     transition: "background-color 0.10s",
                     }}
                 />

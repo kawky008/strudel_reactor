@@ -1,31 +1,31 @@
-import { useDrumStore } from "../../stores/use-drum-store.js";
+import { useDrumStore } from "../../../stores/use-drum-store.js";
 
-export default function BassDrum() {
+export default function CrashCymbal() {
     // get drum settings
-    const { struct, play, gain } = useDrumStore((state) => state.drums.bass_drum);
+    const { struct, play, gain } = useDrumStore((state) => state.drums.crash_cymbal);
     const updateDrum = useDrumStore((state) => state.updateDrum);
 
     const toggleNote = (index) => {
         const newStruct = [...struct];
-        newStruct[index] = struct[index] === "bd" ? "~" : "bd";
-        updateDrum("bass_drum", { struct: newStruct });
+        newStruct[index] = struct[index] === "cr" ? "~" : "cr";
+        updateDrum("crash_cymbal", { struct: newStruct });
     };
 
     const reset = () => {
-        updateDrum("bass_drum", { struct: Array(struct.length).fill("~") });
-        updateDrum("bass_drum", { play: true });
-        updateDrum("bass_drum", { gain: 1 });
+        updateDrum("crash_cymbal", { struct: Array(struct.length).fill("~") });
+        updateDrum("crash_cymbal", { play: true });
+        updateDrum("crash_cymbal", { gain: 1 });
     }
 
     return (
         <div style={{ display: "flex", gap: "1rem"}}>
             <div className="drum-settings">
-                <div className="name">Bass Drum</div>
+                <div className="name">Crash Cymbal</div>
 
                 {/* mute button */}
                 <div
                     className="mute-button"
-                    onClick={() => updateDrum("bass_drum", { play: !play })}
+                    onClick={() => updateDrum("crash_cymbal", { play: !play })}
                 >
                     {play ? <i className="fa-solid fa-volume-high" /> : <i className="fa-solid fa-volume-xmark" /> }
                 </div>
@@ -38,7 +38,7 @@ export default function BassDrum() {
                     max="1"
                     step="0.05"
                     value={gain}
-                    onChange={(e) => updateDrum("bass_drum", { gain: parseFloat(e.target.value) })}
+                    onChange={(e) => updateDrum("crash_cymbal", { gain: parseFloat(e.target.value) })}
                 />
 
                 {/* reset button */}
@@ -52,7 +52,7 @@ export default function BassDrum() {
                     onClick={() => toggleNote(i)}
                     className="drum-bar"
                     style={{
-                    backgroundColor: note === "bd" ? "white" : "#171717",
+                    backgroundColor: note === "cr" ? "white" : "#171717",
                     transition: "background-color 0.10s",
                     }}
                 />

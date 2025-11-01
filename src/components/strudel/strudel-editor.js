@@ -12,7 +12,7 @@ import { useStrudelStore } from "../../stores/use-strudel-store";
 
 let globalEditor = null;
 
-export default function StrudelEditor({ BPM }) {
+export default function StrudelEditor() {
     const setControls = useStrudelStore((state) => state.setControls);
     const hasRun = useRef(false);
 
@@ -50,14 +50,14 @@ export default function StrudelEditor({ BPM }) {
                 },
             });
 
-            document.getElementById("proc").value = MyTunes({ BPM });
+            document.getElementById("proc").value = MyTunes();
         }
-    }, [BPM]);
+    }, []);
 
     const handlePlay = () => globalEditor?.evaluate();
     const handleStop = () => globalEditor?.stop();
     const handleProc = () => {
-        const code = MyTunes({ BPM });
+        const code = MyTunes();
         globalEditor?.setCode(code);
     };
 
@@ -67,7 +67,7 @@ export default function StrudelEditor({ BPM }) {
             stop: handleStop,
             proc: handleProc,
         });
-    }, [setControls, BPM])
+    }, [setControls])
 
     return (
         <div>
