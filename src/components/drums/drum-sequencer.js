@@ -28,7 +28,7 @@ export default function DrumSequencer() {
             <div style={{display: "flex", justifyContent: "flex-start", alignItems: "flex-end"}}>
                 <div className="instrument-settings">
                     <div className="name">Drums</div>
-                    <div className="row" style={{gap: "1rem"}}>
+                    <div className="row" style={{display: "flex", alignItems: "center", gap: "1rem"}}>
                         <div className="col">
                             <BankSelector />
                         </div>

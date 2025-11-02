@@ -35,30 +35,44 @@ export default function GlobalSettings() {
     }
 
     return (
-        <div className="global-settings row" style={{gap: "1rem"}}>
-
-            {/* preprocess */}
-            <div className="col">
+        <div className="global-settings">
+            {/* BPM */}
+            <div className="bpm-selector">
                 <i
-                    className="fa-solid fa-rotate-right"
-                    onClick={(() => {procAll()})}
+                    className="bpm-button fa-solid fa-minus"
+                    onClick={() => setBPM(BPM - 1)}
+                />
+                <input
+                    className="bpm-input"
+                    type="text"
+                    name="BPM"
+                    value={BPM}
+                    onChange={(e) => setBPM(e.target.value)}
+                />
+                <i
+                    className="bpm-button fa-solid fa-plus"
+                    onClick={() => setBPM(BPM + 1)}
                 />
             </div>
 
+            {/* preprocess */}
+            <i
+                className="fa-solid fa-rotate-right"
+                onClick={(() => {procAll()})}
+            />
+
             {/* play & stop */}
-            <div className="col">
-                {!isPlaying ? 
-                    <i
-                        className="fa-solid fa-play"
-                        onClick={() => {playAll()}}
-                    />
-                    :
-                    <i
-                        className="fa-solid fa-pause"
-                        onClick={() => {stopAll()}}
-                    />
-                }
-            </div>
+            {!isPlaying ? 
+                <i
+                    className="fa-solid fa-play"
+                    onClick={() => {playAll()}}
+                />
+                :
+                <i
+                    className="fa-solid fa-pause"
+                    onClick={() => {stopAll()}}
+                />
+            }
         </div>
     )
 }

@@ -30,10 +30,10 @@ html, body {
 }
 
 @keyframes glow {
-  0% { box-shadow: 0 0 0.2rem 0.2rem #c1935350; }
-  33% { box-shadow: 0 0 0.2rem 0.2rem #c1535350; }
-  66% { box-shadow: 0 0 0.2rem 0.2rem #bcc15350; }
-  100% { box-shadow: 0 0 0.2rem 0.2rem #5386c150; }
+  0% { box-shadow: 0 0 0.2rem 0.15rem #c1935350; }
+  33% { box-shadow: 0 0 0.2rem 0.15rem #c1535350; }
+  66% { box-shadow: 0 0 0.2rem 0.15rem #bcc15350; }
+  100% { box-shadow: 0 0 0.2rem 0.15rem #5386c150; }
 }
 
 @keyframes glow-notes {
@@ -52,6 +52,7 @@ html, body {
 }
 
 .hero-banner {
+  position: relative;
   width: 100vw;
   height: 30vh;
   background-size: cover;
@@ -60,6 +61,26 @@ html, body {
   align-items: center;
   justify-content: flex-start;
   color: white;
+  margin-top: 0;
+  align-self: stretch;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-banner .hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 1;
+  filter: brightness(0.7);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-banner .texts {
@@ -93,6 +114,8 @@ html, body {
   width: 100vw;
   height: 10vh;
   background-color: #131212;
+  border: 0.2rem solid black;
+  z-index: 2;
 }
 
 .radio-inputs {
@@ -115,7 +138,7 @@ html, body {
 
 .radio-inputs .radio input {
   display: none;
-  width: 2rem;
+  width: 1.8rem;
 }
 
 .radio-inputs .radio .name {
@@ -137,7 +160,6 @@ html, body {
 .radio-inputs .radio input:checked + .name {
   background-color: #131212;
   height: 2.4rem;
-  box-shadow: 0 0 0.2rem 0.25rem #c1935350;
   animation: glow 15s infinite alternate;
 }
 
@@ -199,11 +221,43 @@ html, body {
 
 .global-settings {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   width: 10rem;
-  gap: 1rem;
+  gap: 3.5rem;
   padding: 1rem;
+}
+
+.bpm-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  animation: glow 15s infinite alternate;
+}
+
+.bpm-input {
+  outline: none;
+  box-shadow: none;
+  text-align: center;
+  color: white;
+  background-color: #cacaca20;
+  border: transparent;
+  height: 2.4rem;
+  width: 4rem;
+}
+
+.bpm-button {
+  height: 2.4rem;
+  width: 2.6rem;
+  padding: 0.6rem;
+}
+
+.bpm-button:hover {
+  background-color: #2e2e2e6f;
 }
 
 .sequencer {
@@ -220,14 +274,12 @@ html, body {
   border-radius: 0.2em;
   color: #cacaca99;
   padding: 0.3rem;
-  box-shadow: 0 0 0.2rem 0.25rem #c1935350;
   animation: glow 15s infinite alternate;
 }
 
 .dropdown option {
   width: 12rem;
   height: 2.5rem;
-  background-color: #1c1c1c;
   color: #cacaca99;
   padding: 0.5rem;
 }
@@ -239,11 +291,11 @@ html, body {
   align-items: flex-start;
   width: 30rem;
   height: 7rem;
+  border-radius: 0.5rem;
   gap: 0.5rem;
   padding: 0.75rem;
-  padding-left: 1.5rem;
+  padding-left: 2rem;
   margin-right: 3rem;
-  box-shadow: 0 0 0.2rem 0.25rem #c1935350;
   animation: glow 15s infinite alternate;
 }
 
@@ -263,7 +315,6 @@ html, body {
   padding: 1rem;
   margin-right: 2rem;
   flex-shrink: 0;
-  box-shadow: 0 0 0.2rem 0.25rem #c1935350;
   animation: glow 15s infinite alternate;
 }
 
@@ -300,8 +351,6 @@ i:hover {
   border-radius: 0.5rem;
   padding: 0.5rem;
   flex-shrink: 0;
-  background-color: #1c1c1c;
-  box-shadow: 0 0 0.2rem 0.25rem #c1935350;
   animation: glow 15s infinite alternate;
   transition: all .10s ease-in-out;
 }
@@ -321,7 +370,6 @@ i:hover {
   width: 1.5rem;
   height: 3rem;
   margin-bottom: 0.2em;
-  border: 1px solid #c1935350;
+  border: 1px solid #cacaca50;
   cursor: pointer;
-  animation: glow-notes 15s infinite alternate;
 }
