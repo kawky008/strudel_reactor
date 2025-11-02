@@ -1,4 +1,5 @@
 import { useDrumStore } from "../../../stores/use-drum-store.js";
+import VolumeSlider from "../../volume-slider.js";
 
 export default function BassDrum() {
     // get drum settings
@@ -31,15 +32,7 @@ export default function BassDrum() {
                 </div>
 
                 {/* volume slider */}
-                <input
-                    className="volume-slider"
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.05"
-                    value={gain}
-                    onChange={(e) => updateDrum("bass_drum", { gain: parseFloat(e.target.value) })}
-                />
+                <VolumeSlider name={"bass_drum"} gain={gain} update={updateDrum} />
 
                 {/* reset button */}
                 <i className="fa-solid fa-rotate-left ms-2" onClick={() => reset()} />
