@@ -42,10 +42,10 @@ export default function RideCymbal() {
                 />
 
                 {/* reset button */}
-                <i className="fa-solid fa-trash ms-2" onClick={() => reset()} />
+                <i className="fa-solid fa-rotate-left ms-2" onClick={() => reset()} />
                 
             </div>
-            <div style={{ display: "flex", gap: "0.1rem" }}>
+            <div className="drum-bars">
                 {struct.map((note, i) => (
                 <div
                     key={i}
@@ -54,6 +54,8 @@ export default function RideCymbal() {
                     style={{
                     backgroundColor: note === "rd" ? "white" : "#171717",
                     transition: "background-color 0.10s",
+                    marginRight: (i + 1) % 16 === 0 && "0.75rem",
+                    flexShrink: 0
                     }}
                 />
                 ))}

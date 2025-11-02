@@ -12,6 +12,7 @@ export function MyTunes() {
     const drumState = useDrumStore.getState();
     const drumStack = drumState.getDrumStr();
     const bank = drumState.drums.settings.bank;
+    const slow = drumState.drums.settings.slow;
 
     return `
     setcps(${BPM}/60/4)
@@ -20,6 +21,6 @@ export function MyTunes() {
     
     drums:
     ${drumStack}
-    .bank("${bank}")
+    .bank("${bank}").slow(${slow})
     `;
 }

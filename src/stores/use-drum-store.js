@@ -4,55 +4,56 @@ export const useDrumStore = create((set, get) => ({
     drums: {
         settings: {
             play: false,
-            bank: "RolandTR808"
+            bank: "RolandTR808",
+            slow: 2
         },
         hihat: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         },
         open_hihat: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         },
         snare_drum: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         },
         rim_shot: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         },
         low_tom: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         },
         middle_tom: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         },
         high_tom: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         },
         ride_cymbal: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         },
         crash_cymbal: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         },
         bass_drum: {
-            struct: Array(16).fill("~"),
+            struct: Array(32).fill("~"),
             play: true,
             gain: 1
         }

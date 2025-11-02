@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useStrudelStore } from "../../stores/use-strudel-store";
 import { useDrumStore } from "../../stores/use-drum-store";
+import DrumBarButtons from "./drum-bar-buttons";
 import BankSelector from "./bank-selector";
 import Hihat from "./parts/hihat";
 import OpenHihat from "./parts/open-hihat";
@@ -24,74 +25,77 @@ export default function DrumSequencer() {
 
     return (
         <div className="">
-            <div className="instrument-settings">
-                <div className="name">Drums</div>
-                <div className="row" style={{gap: "1rem"}}>
-                    <div className="col">
-                        <BankSelector />
-                    </div>
+            <div style={{display: "flex", justifyContent: "flex-start", alignItems: "flex-end"}}>
+                <div className="instrument-settings">
+                    <div className="name">Drums</div>
+                    <div className="row" style={{gap: "1rem"}}>
+                        <div className="col">
+                            <BankSelector />
+                        </div>
 
-                    {/* preprocess */}
-                    <div className="col">
-                        <i
-                            className="fa-solid fa-rotate-right"
-                            onClick={(() => {
-                                updateDrum("settings", {play: true});
-                                proc?.();
-                                setIsProced(true);
-                            })}
-                        />
-                    </div>
-
-                    {/* play & stop */}
-                    <div className="col">
-                        {!isPlaying ? 
+                        {/* preprocess */}
+                        <div className="col">
                             <i
-                                className="fa-solid fa-play"
-                                onClick={() => {
-                                    if (!isProced) {
-                                        alert("Error: Code has not been preprocessed.");
-                                        return;
-                                    }
-                                    setIsPlaying(true);
-                                    play?.();
-                                }}
-                            />
-                            :
-                            <i
-                                className="fa-solid fa-pause"
-                                onClick={() => {
-                                    setIsPlaying(false);
-                                    stop?.();
-                                }}
-                            />
-                        }
-                    </div>
-
-                    {/* mute & unmute */}
-                    <div className="col">
-                        {!playDrums ?
-                            <i
-                                className="fa-solid fa-volume-xmark"
+                                className="fa-solid fa-rotate-right"
                                 onClick={(() => {
                                     updateDrum("settings", {play: true});
                                     proc?.();
+                                    setIsProced(true);
                                 })}
                             />
-                            :
-                            <i
-                                className="fa-solid fa-volume-high"
-                                onClick={(() => {
-                                    updateDrum("settings", {play: false});
-                                    proc?.();
-                                })}
-                            />
-                        }
-                        
+                        </div>
+
+                        {/* play & stop */}
+                        <div className="col">
+                            {!isPlaying ? 
+                                <i
+                                    className="fa-solid fa-play"
+                                    onClick={() => {
+                                        if (!isProced) {
+                                            alert("Error: Code has not been preprocessed.");
+                                            return;
+                                        }
+                                        setIsPlaying(true);
+                                        play?.();
+                                    }}
+                                />
+                                :
+                                <i
+                                    className="fa-solid fa-pause"
+                                    onClick={() => {
+                                        setIsPlaying(false);
+                                        stop?.();
+                                    }}
+                                />
+                            }
+                        </div>
+
+                        {/* mute & unmute */}
+                        <div className="col">
+                            {!playDrums ?
+                                <i
+                                    className="fa-solid fa-volume-xmark"
+                                    onClick={(() => {
+                                        updateDrum("settings", {play: true});
+                                        proc?.();
+                                    })}
+                                />
+                                :
+                                <i
+                                    className="fa-solid fa-volume-high"
+                                    onClick={(() => {
+                                        updateDrum("settings", {play: false});
+                                        proc?.();
+                                    })}
+                                />
+                            }
+                            
+                        </div>
                     </div>
                 </div>
+
+                <DrumBarButtons />
             </div>
-            
             
             <div className="mt-4">
                 <Hihat />

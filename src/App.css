@@ -2,6 +2,25 @@ html, body {
   overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 10px;   
+    height: 6px;  
+}
+
+::-webkit-scrollbar-track {
+    background: #1c1c1c;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #cacaca50;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #cacaca50;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -131,7 +150,7 @@ html, body {
   width: 90vw;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  margin-left: 5vw;
+  margin-left: 3vw;
 }
 
 .dropdown {
@@ -163,6 +182,7 @@ html, body {
   gap: 0.5rem;
   padding: 0.75rem;
   padding-left: 1.5rem;
+  margin-right: 2rem;
   box-shadow: 0 0 0.2rem 0.25rem #c1935350;
   animation: glow 15s infinite alternate;
 }
@@ -182,6 +202,7 @@ html, body {
   gap: 1.5rem;
   padding: 1rem;
   margin-right: 2rem;
+  flex-shrink: 0;
   box-shadow: 0 0 0.2rem 0.25rem #c1935350;
   animation: glow 15s infinite alternate;
 }
@@ -203,9 +224,24 @@ i:hover {
   color: #e6e6e6;
 }
 
+.bar-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  gap: 2rem;
+}
+
+.drum-bars {
+  display: flex;
+  gap: 0.1rem;
+  overflow-x: auto;
+}
+
 .drum-bar {
   width: 1.5rem;
   height: 3rem;
+  margin-bottom: 0.2em;
   border: 1px solid #c1935350;
   cursor: pointer;
   animation: glow-notes 15s infinite alternate;
