@@ -119,10 +119,10 @@ html, body {
 }
 
 .radio-inputs {
-  position: relative;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  width: 32rem;
   border-radius: 0.5rem;
   box-sizing: border-box;
   height: 2.5em;

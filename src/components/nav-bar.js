@@ -2,14 +2,14 @@ import GlobalSettings from "./global-settings";
 
 export default function NavBar({ instrument, setInstrument }) {
     return (
-        <div className="row nav-bar">
-            <div className="col">
+        <div className="nav-bar">
+            <div className="">
                 
             </div>
-            <div className="col-4">
+            <div style={{marginLeft: "50rem"}}>
                 <GlobalSettings />
             </div>
-            <div className="col-4 radio-inputs">
+            <div className="radio-inputs">
                 <label className="radio">
                     <input
                         type="radio"
