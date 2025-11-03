@@ -5,7 +5,7 @@ export default function deleteDrumBar() {
     const updateDrum = useDrumStore.getState().updateDrum;
 
     if (drums.bass_drum.struct.length > 32 &&
-        window.confirm("Do you want to delete a bar? This action cannot be undone."))
+        window.confirm("Do you want to delete bar? This action cannot be undone."))
     {
         // delete one bar from every drum component
         Object.entries(drums).forEach(([name, drum]) => {
