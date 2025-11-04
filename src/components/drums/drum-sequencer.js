@@ -5,11 +5,13 @@ import { useDrumStore } from "../../stores/use-drum-store";
 import DrumBarButtons from "./drum-bar-buttons";
 import BankSelector from "./bank-selector";
 import Track from "../tracks";
+import VolumeSlider from "../volume-slider";
 
 export default function DrumSequencer() {
     const { play, stop, proc } = useStrudelStore();
 
-    const playDrums = useDrumStore((state) => state.drums.settings.play)
+    const drumPlay = useDrumStore((state) => state.drums.settings.play);
+    const drumGain = useDrumStore((state) => state.drums.settings.gain);
     const updateDrum = useDrumStore((state) => state.updateDrum)
 
     // drum tracks
@@ -24,41 +26,25 @@ export default function DrumSequencer() {
     const { struct: crStruct, play: crPlay, gain: crGain } = useDrumStore((state) => state.drums.crash_cymbal);
     const { struct: bdStruct, play: bdPlay, gain: bdGain } = useDrumStore((state) => state.drums.bass_drum);
 
-    const [isProced, setIsProced] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false);
 
     return (
         <div className="">
             <div style={{display: "flex", justifyContent: "flex-start", alignItems: "flex-end"}}>
-                <div className="instrument-settings">
-                    <div className="name">Drums</div>
-                    <div className="row" style={{display: "flex", alignItems: "center", gap: "1rem"}}>
-                        <div className="col">
-                            <BankSelector />
-                        </div>
 
-                        {/* preprocess */}
-                        <div className="col">
-                            <i
-                                className="fa-solid fa-rotate-right"
-                                onClick={(() => {
-                                    updateDrum("settings", {play: true});
-                                    proc?.();
-                                    setIsProced(true);
-                                })}
-                            />
-                        </div>
+                {/* drum settings */}
+                <div className="instrument-settings">
+                    <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "8rem"}}>
+                        <div className="name">Drums Settings</div>
 
                         {/* play & stop */}
-                        <div className="col">
+                        <div>
                             {!isPlaying ? 
                                 <i
                                     className="fa-solid fa-play"
                                     onClick={() => {
-                                        if (!isProced) {
-                                            alert("Error: Code has not been preprocessed.");
-                                            return;
-                                        }
+                                        updateDrum("settings", {play: true});
+                                        proc?.();
                                         setIsPlaying(true);
                                         play?.();
                                     }}
@@ -73,31 +59,22 @@ export default function DrumSequencer() {
                                 />
                             }
                         </div>
+                    </div>                    
+                    
+                    <div style={{display: "flex", alignItems: "center", gap: "0.5rem"}}>
+                        <BankSelector />
 
-                        {/* mute & unmute */}
-                        <div className="col">
-                            {!playDrums ?
-                                <i
-                                    className="fa-solid fa-volume-xmark"
-                                    onClick={(() => {
-                                        updateDrum("settings", {play: true});
-                                        proc?.();
-                                    })}
-                                />
-                                :
-                                <i
-                                    className="fa-solid fa-volume-high"
-                                    onClick={(() => {
-                                        updateDrum("settings", {play: false});
-                                        proc?.();
-                                    })}
-                                />
-                            }
-                            
-                        </div>
+                        {/* mute button */}
+                        <div
+                            className="mute-button"
+                            onClick={() => updateDrum("settings", { play: !play })}
+                            style={{marginLeft: "0.75rem", marginRight: "0.5rem"}}
+                        >
+                            {drumPlay ? <i className="fa-solid fa-volume-high" /> : <i className="fa-solid fa-volume-xmark" /> }
+                        </div>                                
+                        <VolumeSlider name="settings" gain={drumGain} update={updateDrum} />
                     </div>
                 </div>
-
                 <DrumBarButtons />
             </div>
             

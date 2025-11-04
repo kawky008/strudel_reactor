@@ -5,7 +5,8 @@ export const useDrumStore = create((set, get) => ({
         settings: {
             play: false,
             bank: "RolandTR808",
-            slow: 2
+            slow: 2,
+            gain: 1,
         },
         hihat: {
             struct: Array(32).fill("~"),

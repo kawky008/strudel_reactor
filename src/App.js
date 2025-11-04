@@ -4,7 +4,6 @@ import StrudelEditor from './components/strudel/strudel-editor';
 import DrumSequencer from './components/drums/drum-sequencer';
 import HeroBanner from './components/hero-banner';
 import NavBar from './components/nav-bar';
-import GlobalSettings from './components/global-settings';
 import { set } from '@strudel/core';
 
 export default function App() { 

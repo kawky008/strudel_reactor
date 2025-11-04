@@ -49,10 +49,10 @@ export default function Track({
                     onClick={() => toggleNote(i)}
                     className="drum-bar"
                     style={{
-                    backgroundColor: note === symbol ? "white" : "#171717",
-                    transition: "background-color 0.10s",
-                    marginRight: ((i + 1) % 16 === 0) ? "0.75rem" : "0",
-                    flexShrink: 0
+                        backgroundColor: note === symbol ? "white" : "#171717",
+                        transition: "background-color 0.10s",
+                        marginRight: ((i + 1) % 16 === 0) ? "1.5rem" : "0",
+                        flexShrink: 0
                     }}
                 />
                 ))}

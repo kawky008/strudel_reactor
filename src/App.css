@@ -228,7 +228,7 @@ html, body {
   padding: 1rem;
 }
 
-.bpm-selector {
+.value-selector {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -239,7 +239,7 @@ html, body {
   animation: glow 15s infinite alternate;
 }
 
-.bpm-input {
+.value-input {
   outline: none;
   box-shadow: none;
   text-align: center;
@@ -250,13 +250,13 @@ html, body {
   width: 4rem;
 }
 
-.bpm-button {
+.value-button {
   height: 2.4rem;
   width: 2.6rem;
   padding: 0.6rem;
 }
 
-.bpm-button:hover {
+.value-button:hover {
   background-color: #2e2e2e6f;
 }
 
@@ -274,6 +274,7 @@ html, body {
   border-radius: 0.2em;
   color: #cacaca99;
   padding: 0.3rem;
+  margin-right: 1rem;
   animation: glow 15s infinite alternate;
 }
 
@@ -290,10 +291,9 @@ html, body {
   justify-content: flex-start;
   align-items: flex-start;
   width: 30rem;
-  height: 7rem;
+  height: 8.5rem;
   border-radius: 0.5rem;
   gap: 0.5rem;
-  padding: 0.75rem;
   padding-left: 2rem;
   margin-right: 3rem;
   animation: glow 15s infinite alternate;
@@ -302,6 +302,8 @@ html, body {
 .instrument-settings .name {
   font-size: larger;
   font-weight: 400;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .drum-settings {
@@ -346,7 +348,7 @@ i:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 7rem;
+  width: 9rem;
   height: 2.5rem;
   border-radius: 0.5rem;
   padding: 0.5rem;

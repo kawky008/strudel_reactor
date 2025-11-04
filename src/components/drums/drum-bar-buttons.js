@@ -5,10 +5,10 @@ export default function DrumBarButtons() {
     return (
         <div className="bar-buttons">
             <div className="button" onClick={addDrumBar}>
-                Add
+                Add Bar
             </div>
             <div className="button" onClick={deleteDrumBar}>
-                Delete
+                Delete Bar
             </div>
         </div>
     )
