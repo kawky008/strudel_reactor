@@ -306,7 +306,7 @@ html, body {
   margin-bottom: 1rem;
 }
 
-.drum-settings {
+.track-settings {
   width: 30rem;
   height: 3rem;
   border-radius: 0.5rem;
@@ -320,11 +320,11 @@ html, body {
   animation: glow 15s infinite alternate;
 }
 
-.drum-settings .name {
+.track-settings .name {
   width: 10rem;
 }
 
-.drum-settings .mute-button {
+.track-settings .mute-button {
   width: 1rem;
   cursor: pointer;
 }
@@ -362,13 +362,13 @@ i:hover {
   background-color: #2e2e2e6f;
 }
 
-.drum-bars {
+.notes {
   display: flex;
   gap: 0.1rem;
   overflow-x: auto;
 }
 
-.drum-bar {
+.note {
   width: 1.5rem;
   height: 3rem;
   margin-bottom: 0.2em;

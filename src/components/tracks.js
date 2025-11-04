@@ -17,7 +17,7 @@ export default function Track({
 
     return (
         <div style={{ display: "flex", gap: "1rem"}}>
-            <div className="drum-settings">
+            <div className="track-settings">
                 <div className="name">{displayName}</div>
 
                 {/* mute button */}
@@ -42,12 +42,12 @@ export default function Track({
                 />
                 
             </div>
-            <div className="drum-bars">
+            <div className="notes">
                 {struct.map((note, i) => (
                 <div
                     key={i}
                     onClick={() => toggleNote(i)}
-                    className="drum-bar"
+                    className="note"
                     style={{
                         backgroundColor: note === symbol ? "white" : "#171717",
                         transition: "background-color 0.10s",
