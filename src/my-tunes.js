@@ -1,6 +1,7 @@
 import { settings } from "@strudel/codemirror";
 import { useGlobalStore } from "./stores/use-global-store";
 import { useDrumStore } from "./stores/use-drum-store";
+import { usePianoStore } from "./stores/use-piano-store";
 
 
 export function MyTunes() {
@@ -15,6 +16,13 @@ export function MyTunes() {
     const drumSlow = drumState.drums.settings.slow;
     const drumGain = drumState.drums.settings.gain;
 
+    // piano
+    const pianoState = usePianoStore.getState();
+    const pianoStack = pianoState.getPianoStr();
+    const pianoBank = pianoState.piano.settings.bank;
+    const pianoSlow = pianoState.piano.settings.slow;
+    const pianoGain = pianoState.piano.settings.gain;
+
     return `
     setcps(${BPM}/60/4)
 
@@ -23,5 +31,9 @@ export function MyTunes() {
     drums:
     ${drumStack}
     .bank("${drumBank}").slow(${drumSlow}).gain(${drumGain})
+
+    piano:
+    ${pianoStack}
+    .sound("${pianoBank}").slow(${pianoSlow}).gain(${pianoGain})
     `;
 }

@@ -96,7 +96,7 @@ export const usePianoStore = create((set, get) => ({
         if (!play) {
             return `// ${name} muted`;
         };
-        return `s("${struct.join(" ")}").gain(${gain})`;
+        return `note("${struct.join(" ")}").gain(${gain})`;
     })
     .join(",\n    ");
 

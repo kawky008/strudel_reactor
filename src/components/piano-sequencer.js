@@ -12,6 +12,8 @@ export default function PianoSequencer() {
 
     const banks = [
         { value: "gm_piano", label: "Acoustic Piano" },
+        { value: "gm_epiano1", label: "Electric Piano 1" },
+        { value: "gm_epiano2", label: "Electric Piano 2" },
     ];
 
     const piano = usePianoStore.getState().piano;
@@ -61,6 +63,7 @@ export default function PianoSequencer() {
                                 <i
                                     className="fa-solid fa-pause"
                                     onClick={() => {
+                                        updatePiano("settings", {play: false});
                                         setIsPlaying(false);
                                         stop?.();
                                     }}

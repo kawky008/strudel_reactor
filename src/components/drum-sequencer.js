@@ -69,6 +69,7 @@ export default function DrumSequencer() {
                                 <i
                                     className="fa-solid fa-pause"
                                     onClick={() => {
+                                        updateDrum("settings", {play: false});
                                         setIsPlaying(false);
                                         stop?.();
                                     }}
