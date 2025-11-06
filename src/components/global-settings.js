@@ -3,7 +3,7 @@ import { useStrudelStore } from "../stores/use-strudel-store";
 import { useGlobalStore } from "../stores/use-global-store";
 import { useDrumStore } from "../stores/use-drum-store";
 import { usePianoStore } from "../stores/use-piano-store";
-import ValueSelector from "./value-selector";
+import BPMSelector from "./selectors/bpm-selector";
 
 export default function GlobalSettings() {
     const { play, stop, proc } = useStrudelStore();
@@ -36,7 +36,7 @@ export default function GlobalSettings() {
     return (
         <div className="global-settings">
             {/* BPM */}
-            <ValueSelector name="BPM" value={BPM} setValue={setBPM} />
+            <BPMSelector name="BPM" value={BPM} setValue={setBPM} />
 
             {/* play & stop */}
             <div style={{width: "2rem"}}>

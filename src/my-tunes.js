@@ -19,7 +19,6 @@ export function MyTunes() {
     // piano
     const pianoState = usePianoStore.getState();
     const pianoStack = pianoState.getPianoStr();
-    const pianoBank = pianoState.piano.settings.bank;
     const pianoSlow = pianoState.piano.settings.slow;
     const pianoGain = pianoState.piano.settings.gain;
 
@@ -28,12 +27,15 @@ export function MyTunes() {
 
     samples('https://raw.githubusercontent.com/Mittans/tidal-drum-machines/main/machines/tidal-drum-machines.json')
     
+    function makeNote(n, s, g, r) {
+        return note(n).sound(s).gain(g).release(r);
+    }
+
     drums:
     ${drumStack}
     .bank("${drumBank}").slow(${drumSlow}).gain(${drumGain})
 
     piano:
-    ${pianoStack}
-    .sound("${pianoBank}").slow(${pianoSlow}).gain(${pianoGain})
+    ${pianoStack}.slow(${pianoSlow}).gain(${pianoGain})
     `;
 }

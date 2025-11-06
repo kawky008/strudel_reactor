@@ -1,11 +1,11 @@
 
 import { useState } from "react";
-import { useStrudelStore } from "../stores/use-strudel-store";
-import { useDrumStore } from "../stores/use-drum-store";
-import BarButtons from "./bar-buttons";
-import BankSelector from "./bank-selector";
-import Track from "./tracks";
-import VolumeSlider from "./volume-slider";
+import { useStrudelStore } from "../../stores/use-strudel-store";
+import { useDrumStore } from "../../stores/use-drum-store";
+import BarButtons from "../bar-buttons";
+import BankSelector from "../bank-selector";
+import DrumTrack from "./drum-tracks";
+import GeneralVolumeSlider from "../volume-sliders/general-volume-slider";
 
 export default function DrumSequencer() {
     const { play, stop, proc } = useStrudelStore();
@@ -46,37 +46,36 @@ export default function DrumSequencer() {
 
     return (
         <div className="">
-            <div style={{display: "flex", justifyContent: "flex-start", alignItems: "flex-end"}}>
+            <div style={{display: "flex", justifyContent: "flex-start", alignItems: "flex-end", gap: "3rem"}}>
 
                 {/* drum settings */}
                 <div className="instrument-settings">
-                    <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "8rem"}}>
-                        <div className="name">Drums Settings</div>
+                    
+                    <div className="name">Drums Settings</div>
 
-                        {/* play & stop */}
-                        <div>
-                            {!isPlaying ? 
-                                <i
-                                    className="fa-solid fa-play"
-                                    onClick={() => {
-                                        updateDrum("settings", {play: true});
-                                        proc?.();
-                                        setIsPlaying(true);
-                                        play?.();
-                                    }}
-                                />
-                                :
-                                <i
-                                    className="fa-solid fa-pause"
-                                    onClick={() => {
-                                        updateDrum("settings", {play: false});
-                                        setIsPlaying(false);
-                                        stop?.();
-                                    }}
-                                />
-                            }
-                        </div>
-                    </div>                    
+                    {/* play & stop */}
+                    <div>
+                        {!isPlaying ? 
+                            <i
+                                className="fa-solid fa-play"
+                                onClick={() => {
+                                    updateDrum("settings", {play: true});
+                                    proc?.();
+                                    setIsPlaying(true);
+                                    play?.();
+                                }}
+                            />
+                            :
+                            <i
+                                className="fa-solid fa-pause"
+                                onClick={() => {
+                                    updateDrum("settings", {play: false});
+                                    setIsPlaying(false);
+                                    stop?.();
+                                }}
+                            />
+                        }
+                    </div>
                     
                     <div style={{display: "flex", alignItems: "center", gap: "0.5rem"}}>
                         <BankSelector banks={banks} bank={bank} update={updateDrum} />
@@ -89,41 +88,41 @@ export default function DrumSequencer() {
                         >
                             {drumPlay ? <i className="fa-solid fa-volume-high" /> : <i className="fa-solid fa-volume-xmark" /> }
                         </div>                                
-                        <VolumeSlider name="settings" gain={drumGain} update={updateDrum} />
+                        <GeneralVolumeSlider name="settings" gain={drumGain} update={updateDrum} />
                     </div>
                 </div>
                 <BarButtons instrument={drums} update={updateDrum} />
             </div>
             
             <div className="mt-4">
-                <Track displayName="Hi-Hat" name="hihat" symbol="hh" struct={hhStruct} play={hhPlay} gain={hhGain} update={updateDrum} />
+                <DrumTrack displayName="Hi-Hat" name="hihat" symbol="hh" struct={hhStruct} play={hhPlay} gain={hhGain} update={updateDrum} />
             </div>
             <div className="mt-4">
-                <Track displayName="Open Hi-Hat" name="open_hihat" symbol="oh" struct={ohStruct} play={ohPlay} gain={ohGain} update={updateDrum} />
+                <DrumTrack displayName="Open Hi-Hat" name="open_hihat" symbol="oh" struct={ohStruct} play={ohPlay} gain={ohGain} update={updateDrum} />
             </div>
             <div className="mt-4">
-                <Track displayName="Snare Drum" name="snare_drum" symbol="sd" struct={sdStruct} play={sdPlay} gain={sdGain} update={updateDrum} />
+                <DrumTrack displayName="Snare Drum" name="snare_drum" symbol="sd" struct={sdStruct} play={sdPlay} gain={sdGain} update={updateDrum} />
             </div>
             <div className="mt-4">
-                <Track displayName="Rim Shot" name="rim_shot" symbol="rim" struct={rimStruct} play={rimPlay} gain={rimGain} update={updateDrum} />
+                <DrumTrack displayName="Rim Shot" name="rim_shot" symbol="rim" struct={rimStruct} play={rimPlay} gain={rimGain} update={updateDrum} />
             </div>
             <div className="mt-4">
-                <Track displayName="Low Tom" name="low_tom" symbol="lt" struct={ltStruct} play={ltPlay} gain={ltGain} update={updateDrum} />
+                <DrumTrack displayName="Low Tom" name="low_tom" symbol="lt" struct={ltStruct} play={ltPlay} gain={ltGain} update={updateDrum} />
             </div>
             <div className="mt-4">
-                <Track displayName="Middle Tom" name="middle_tom" symbol="mt" struct={mtStruct} play={mtPlay} gain={mtGain} update={updateDrum} />
+                <DrumTrack displayName="Middle Tom" name="middle_tom" symbol="mt" struct={mtStruct} play={mtPlay} gain={mtGain} update={updateDrum} />
             </div>
             <div className="mt-4">
-                <Track displayName="High Tom" name="high_tom" symbol="ht" struct={htStruct} play={htPlay} gain={htGain} update={updateDrum} />
+                <DrumTrack displayName="High Tom" name="high_tom" symbol="ht" struct={htStruct} play={htPlay} gain={htGain} update={updateDrum} />
             </div>
             <div className="mt-4">
-                <Track displayName="Ride Cymbal" name="ride_cymbal" symbol="rd" struct={rdStruct} play={rdPlay} gain={rdGain} update={updateDrum} />
+                <DrumTrack displayName="Ride Cymbal" name="ride_cymbal" symbol="rd" struct={rdStruct} play={rdPlay} gain={rdGain} update={updateDrum} />
             </div>
             <div className="mt-4">
-                <Track displayName="Crash Cymbal" name="crash_cymbal" symbol="cr" struct={crStruct} play={crPlay} gain={crGain} update={updateDrum} />
+                <DrumTrack displayName="Crash Cymbal" name="crash_cymbal" symbol="cr" struct={crStruct} play={crPlay} gain={crGain} update={updateDrum} />
             </div>
             <div className="mt-4">
-                <Track displayName="Bass Drum" name="bass_drum" symbol="bd" struct={bdStruct} play={bdPlay} gain={bdGain} update={updateDrum} />
+                <DrumTrack displayName="Bass Drum" name="bass_drum" symbol="bd" struct={bdStruct} play={bdPlay} gain={bdGain} update={updateDrum} />
             </div>
         </div>
     )

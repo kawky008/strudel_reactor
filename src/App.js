@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useState } from "react";
 import StrudelEditor from './components/strudel/strudel-editor';
-import DrumSequencer from './components/drum-sequencer';
-import PianoSequencer from './components/piano-sequencer';
+import DrumSequencer from './components/drums/drum-sequencer';
+import PianoSequencer from './components/piano/piano-sequencer';
 import HeroBanner from './components/hero-banner';
 import NavBar from './components/nav-bar';
 import { set } from '@strudel/core';

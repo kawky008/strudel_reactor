@@ -1,6 +1,6 @@
-import VolumeSlider from "./volume-slider.js";
+import GeneralVolumeSlider from "../volume-sliders/general-volume-slider";
 
-export default function Track({
+export default function DrumTrack({
     displayName, name, symbol, struct, play, gain, update
 }) {
     const toggleNote = (index) => {
@@ -29,7 +29,7 @@ export default function Track({
                 </div>
 
                 {/* volume slider */}
-                <VolumeSlider name={name} gain={gain} update={update} />
+                <GeneralVolumeSlider name={name} gain={gain} update={update} />
 
                 {/* reset button */}
                 <i

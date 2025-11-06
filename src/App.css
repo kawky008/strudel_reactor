@@ -2,6 +2,18 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Chrome, Edge, Safari */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 ::-webkit-scrollbar {
     width: 10px;   
     height: 6px;  
@@ -264,7 +276,7 @@ html, body {
   width: 90vw;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  margin-left: 3vw;
+  margin-left: 1.5vw;
 }
 
 .dropdown {
@@ -289,21 +301,18 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   width: 30rem;
-  height: 8.5rem;
+  height: 11rem;
   border-radius: 0.5rem;
-  gap: 0.5rem;
-  padding-left: 2rem;
-  margin-right: 3rem;
+  gap: 1.2rem;
+  padding: 0.5rem;
   animation: glow 15s infinite alternate;
 }
 
 .instrument-settings .name {
   font-size: larger;
   font-weight: 400;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .track-settings {
@@ -328,6 +337,88 @@ html, body {
   width: 1rem;
   cursor: pointer;
 }
+
+.note-settings {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 35rem;
+  height: 11rem;
+  border-radius: 0.5rem;
+  gap: 1.2rem;
+  padding: 0.5rem;
+  margin-left: auto;
+  animation: glow 15s infinite alternate;
+}
+
+.note-settings .name {
+  font-size: larger;
+  font-weight: 400;
+}
+
+.note-settings .close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
+.radio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+  gap: 1.5rem;
+}
+
+.radio-wrapper {
+  margin-bottom: 0rem;
+}
+
+.radio-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.radio-button input[type="radio"] {
+  display: none;
+}
+
+.radio-checkmark {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  border: 2px solid #cacaca99;
+  border-radius: 50%;
+}
+
+.radio-checkmark:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #cacaca99;
+  transition: all 0.2s ease-in-out;
+}
+
+.radio-button input[type="radio"]:checked ~ .radio-checkmark:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-label {
+  margin-bottom: 0rem;
+}
+
 
 i {
   cursor: pointer;
@@ -369,9 +460,26 @@ i:hover {
 }
 
 .note {
+  display: flex;
+  justify-content: center;
+  align-items: end;
   width: 1.5rem;
   height: 3rem;
   margin-bottom: 0.2em;
   border: 1px solid #cacaca50;
   cursor: pointer;
+}
+
+.note i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1rem;
+  color: black;
+  cursor: pointer;
+}
+
+.note i:hover {
+  color: dimgray;
 }
