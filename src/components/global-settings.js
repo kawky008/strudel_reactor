@@ -36,20 +36,31 @@ export default function GlobalSettings() {
     return (
         <div className="global-settings">
             {/* BPM */}
-            <BPMSelector name="BPM" value={BPM} setValue={setBPM} />
+            <span style={{display: "flex", justifyContent: "center", alignItems: "center", gap: "0.75rem", color: "white"}}>
+                BPM
+                <BPMSelector name="BPM" value={BPM} setValue={setBPM} />
+            </span>
 
             {/* play & stop */}
-            <div style={{width: "2rem"}}>
-                {!isPlaying ? 
-                    <i
-                        className="fa-solid fa-play"
+            <div style={{width: "8rem", cursor: "pointer", color: "white"}}>
+                {!isPlaying ?
+                    <span
+                        style={{display: "flex", justifyContent: "center", alignItems: "center", gap: "0.75rem"}}
                         onClick={() => {playAll()}}
-                    />
+                    >
+                        Play All
+                        <i className="fa-solid fa-play"/>
+                    </span>
                     :
-                    <i
-                        className="fa-solid fa-pause"
+                    <span
+                        style={{display: "flex", justifyContent: "center", alignItems: "center", gap: "0.75rem"}}
                         onClick={() => {stopAll()}}
-                    />
+                    >
+                        Stop All
+                        <i
+                            className="fa-solid fa-pause"
+                        />
+                    </span>
                 }
             </div>
 

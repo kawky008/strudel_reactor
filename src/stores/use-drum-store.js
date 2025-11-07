@@ -86,7 +86,7 @@ export const useDrumStore = create((set, get) => ({
         if (!play) {
             return `// ${name} muted`;
         };
-        return `s("${struct.join(" ")}").gain(${gain})`;
+        return `s("${struct.join(" ")}").postgain(${gain})`;
     })
     .join(",\n    ");
 

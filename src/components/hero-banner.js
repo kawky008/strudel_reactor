@@ -6,7 +6,7 @@ export default function HeroBanner() {
         <div
             className="hero-banner"
             style={{
-                backgroundImage: `linear-gradient(rgba(18, 14, 11, 0.6), rgba(18, 14, 11, 0.75)), url(${banner})`
+                backgroundImage: `linear-gradient(rgba(18, 14, 11, 0.5), rgba(18, 14, 11, 0.5)), url(${banner})`
             }}
         >
             <video
