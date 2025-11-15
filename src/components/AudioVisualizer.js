@@ -3,19 +3,25 @@ import * as d3 from "d3";
 import { getD3Data } from "../console-monkey-patch";
 import { useStrudelStore } from "../stores/use-strudel-store";
 
-const NUM_BARS = 10;
+const BAR_NUM = 8;
+const BAR_WIDTH = 40;
+const BAR_MARGIN = 15;
 
 export default function AudioVisualizer() {
     const isPlaying = useStrudelStore((state) => state.isPlaying);
+
     const [strudelData, setStrudelData] = useState([]);
     const [bars, setBars] = useState(
-        new Array(NUM_BARS).fill(0).map(() => ({
+        new Array(BAR_NUM).fill(0).map(() => ({
             power: 0, lastUpdated: 0
         })));
+
     const svgRef = useRef(null);
 
     // set strudelData every 0.5 sec
     useEffect(() => {
+        if (!isPlaying) return;
+
         const interval = setInterval(() => {
             let tempData = getD3Data();
             let result = [];
@@ -34,7 +40,7 @@ export default function AudioVisualizer() {
         }, 500)
 
         return () => clearInterval(interval);
-    }, [])
+    }, [isPlaying])
 
     // update bars when strudelData is updated
     useEffect(() => {
@@ -61,7 +67,9 @@ export default function AudioVisualizer() {
 
     // decay bars when strudelData is not updated
     useEffect(() => {
-        const decay = 0.05;
+        if (!isPlaying) return;
+
+        const decay = 0.2;
         const interval = setInterval(() => {
             setBars(prev => 
                 prev.map(bar => ({
@@ -69,26 +77,18 @@ export default function AudioVisualizer() {
                     power: Math.max(0, bar.power - decay)
                 }))
             );
-        }, 50);
+        }, 150);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [isPlaying]);
 
-    // D3 setup
+    // when not playing → reset bars and strudelData
     useEffect(() => {
-        const svg = d3.select(svgRef.current);
-        const barWidth = 40;
-        const barMargin = 15;
-
-        svg.selectAll("rect")
-            .data(new Array(NUM_BARS).fill(0))
-            .join("rect")
-            .attr("x", (_, i) => i * barWidth)
-            .attr("width", barWidth - barMargin)
-            .attr("fill", "none")
-            .attr("stroke", "white")
-            .attr("stroke-width", 1);
-    }, []);
+        if (!isPlaying) {
+            setBars(new Array(BAR_NUM).fill(0).map(() => ({ power: 0, lastUpdated: 0 })));
+            setStrudelData([]);
+        }
+    }, [isPlaying]);
 
     // D3 update
     useEffect(() => {
@@ -104,12 +104,19 @@ export default function AudioVisualizer() {
     }, [bars]);
 
     return (
-            <svg 
-                ref={svgRef} 
-                width={800} 
-                height={400} 
-                style={{ display: isPlaying ? "block" : "none" }}
-            />
+            <svg ref={svgRef} width={800} height={400} style={{ display: isPlaying ? "block" : "none" }} >
+                {bars.map((_, i) => (
+                    <rect
+                    key={i}
+                    x={i * BAR_WIDTH}
+                    width={BAR_WIDTH - BAR_MARGIN}
+                    fill="none"
+                    stroke="white"
+                    strokeWidth={1}
+                    />
+                ))}
+            </svg>
+
     )
 }
 

@@ -20,9 +20,9 @@ export default function console_monkey_patch() {
             // store only new log
             logArray.push(message);
 
-            // store max 10
-            if (logArray.length > 10) {
-                logArray.splice(0, logArray.length - 10);
+            // store max 8
+            if (logArray.length > 8) {
+                logArray.splice(0, logArray.length - 8);
             }
             //Dispatch a customevent we can listen to in App.js
             const event = new CustomEvent("d3Data", { detail: [...logArray] });
