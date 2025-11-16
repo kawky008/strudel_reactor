@@ -3,15 +3,15 @@ import GlobalSettings from "./global-settings";
 export default function NavBar({ instrument, setInstrument }) {
     return (
         <div className="nav-bar">
-            <div className="nav-section">
+            <div className="nav-section1">
                 
             </div>
 
-            <div className="nav-section">
+            <div className="nav-section2">
                 <GlobalSettings />
             </div> 
 
-            <div className="nav-section">
+            <div className="nav-section3">
                 <div className="radio-inputs">
                     <label className="radio">
                         <input
@@ -44,6 +44,17 @@ export default function NavBar({ instrument, setInstrument }) {
                             onChange={() => setInstrument("guitar")}
                         />
                         <span className="name">Guitar</span>
+                    </label>
+
+                    <label className="radio">
+                        <input
+                            type="radio"
+                            name="radio"
+                            value="bass"
+                            checked={instrument === "bass"}
+                            onChange={() => setInstrument("bass")}
+                        />
+                        <span className="name">Bass</span>
                     </label>
 
                     <label className="radio">

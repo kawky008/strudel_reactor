@@ -6,6 +6,7 @@ import NavBar from './components/nav-bar';
 import DrumSequencer from './components/drums/drum-sequencer';
 import KeyboardSequencer from './components/keyboard/keyboard-sequencer';
 import GuitarSequencer from './components/guitar/guitar-sequencer';
+import BassSequencer from './components/bass/bass-sequencer';
 
 export default function App() { 
   const [instrument, setInstrument] = useState("drums");
@@ -23,6 +24,9 @@ export default function App() {
       )}
       {instrument === "guitar" && (
         <GuitarSequencer />
+      )}
+      {instrument === "bass" && (
+        <BassSequencer />
       )}
       {instrument === "synths" && (
         <>synths page</>

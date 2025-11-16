@@ -4,6 +4,7 @@ import { useGlobalStore } from "../stores/use-global-store";
 import { useDrumStore } from "../stores/use-drum-store";
 import { useKeyboardStore } from "../stores/use-keyboard-store";
 import { useGuitarStore } from "../stores/use-guitar-store";
+import { useBassStore } from "../stores/use-bass-store";
 import BPMSelector from "./selectors/bpm-selector";
 
 export default function GlobalSettings() {
@@ -14,7 +15,8 @@ export default function GlobalSettings() {
 
     const updateDrum = useDrumStore((state) => state.updateDrum);
     const updateKeyboard = useKeyboardStore((state) => state.updateKeyboard);
-    const updateGuitar = useGuitarStore((state) => state.updateGuitar)
+    const updateGuitar = useGuitarStore((state) => state.updateGuitar);
+    const updateBass = useBassStore((state) => state.updateBass);
 
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -22,6 +24,7 @@ export default function GlobalSettings() {
         updateDrum("settings", {play: true});
         updateKeyboard("settings", {play: true});
         updateGuitar("settings", {play: true});
+        updateBass("settings", {play: true});
         // add keyboard, guitar, synths update here
         proc?.();
         setIsPlaying(true);
@@ -32,6 +35,7 @@ export default function GlobalSettings() {
         updateDrum("settings", {play: false});
         updateKeyboard("settings", {play: false});
         updateGuitar("settings", {play: false});
+        updateBass("settings", {play: false});
 
         setIsPlaying(false);
         stop?.();

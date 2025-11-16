@@ -153,15 +153,23 @@ i:hover {
   z-index: 2;
 }
 
-.nav-bar .nav-section {
+.nav-bar .nav-section1 {
   width: 30vw;
+}
+
+.nav-bar .nav-section2 {
+  width: 30vw;
+}
+
+.nav-bar .nav-section3 {
+  width: 40vw;
 }
 
 .radio-inputs {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  width: 32rem;
+  width: 90%;
   border-radius: 0.5rem;
   box-sizing: border-box;
   height: 2.5em;
@@ -173,6 +181,7 @@ i:hover {
 .radio-inputs .radio {
   flex: 1 1 auto;
   text-align: center;
+  width: 7rem;
 }
 
 .radio-inputs .radio input {
@@ -262,7 +271,7 @@ i:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 2.5rem;
   padding: 1rem;
 }
 

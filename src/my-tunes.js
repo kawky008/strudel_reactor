@@ -2,6 +2,7 @@ import { useGlobalStore } from "./stores/use-global-store";
 import { useDrumStore } from "./stores/use-drum-store";
 import { useKeyboardStore } from "./stores/use-keyboard-store";
 import { useGuitarStore } from "./stores/use-guitar-store";
+import { useBassStore } from "./stores/use-bass-store";
 
 
 export function MyTunes() {
@@ -28,6 +29,12 @@ export function MyTunes() {
     const guitarSlow = guitarState.guitar.settings.slow;
     const guitarGain = guitarState.guitar.settings.gain;
 
+    // bass
+    const bassState = useBassStore.getState();
+    const bassStack = bassState.getBassStr();
+    const bassSlow = bassState.bass.settings.slow;
+    const bassGain = bassState.bass.settings.gain;
+
     return `
     setcps(${BPM}/60/4)
 
@@ -47,6 +54,10 @@ export function MyTunes() {
 
         stack(
             ${guitarStack}.slow(${guitarSlow}).gain(${guitarGain})
+        ),
+
+        stack(
+            ${bassStack}.slow(${bassSlow}).gain(${bassGain})
         )
     ).log()
     `;
