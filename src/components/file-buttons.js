@@ -7,13 +7,30 @@ export default function FileHandler() {
     const [clicked, setClicked] = useState(false);
     return (
         <div className="file-dropdown">
+
             <i className="fa-solid fa-bars fa-2x" onClick={() => setClicked(!clicked)}/>
+
             <div className="content" style={{display: clicked ? "block" : "none"}}>
-                <div className="option" onClick={() => resetAllStore()}>Create New</div>
+                {/* create new */}
+                <div
+                    className="option"
+                    onClick={() => {
+                        if ( window.confirm("Do you want to save the current file?") ) {
+                            save();
+                        }
+                        resetAllStore()
+                    }}
+                >
+                    Create New
+                </div>
+
+                {/* open json */}
                 <label  className="option">
                     Open JSON
                     <input type="file" accept="application/json" onChange={open} style={{ display: "none" }} />
                 </label >
+
+                {/* save as json */}
                 <div className="option" onClick={() => save()}>Save As JSON</div>
             </div>
         </div>
