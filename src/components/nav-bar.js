@@ -18,17 +18,6 @@ export default function NavBar({ instrument, setInstrument }) {
                         <input
                             type="radio"
                             name="radio"
-                            value="drums"
-                            checked={instrument === "drums"}
-                            onChange={() => setInstrument("drums")}
-                        />
-                        <span className="name">Drums</span>
-                    </label>
-
-                    <label className="radio">
-                        <input
-                            type="radio"
-                            name="radio"
                             value="keyboard"
                             checked={instrument === "keyboard"}
                             onChange={() => setInstrument("keyboard")}
@@ -67,6 +56,17 @@ export default function NavBar({ instrument, setInstrument }) {
                             onChange={() => setInstrument("synths")}
                         />
                         <span className="name">Synths</span>
+                    </label>
+
+                    <label className="radio">
+                        <input
+                            type="radio"
+                            name="radio"
+                            value="drums"
+                            checked={instrument === "drums"}
+                            onChange={() => setInstrument("drums")}
+                        />
+                        <span className="name">Drums</span>
                     </label>
                 </div>
             </div>

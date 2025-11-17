@@ -10,16 +10,13 @@ import BassSequencer from './components/bass/bass-sequencer';
 import SynthSequencer from './components/synth/synth-sequencer';
 
 export default function App() { 
-  const [instrument, setInstrument] = useState("drums");
+  const [instrument, setInstrument] = useState("keyboard");
   return (
     <div className="App">
       <HeroBanner />
 
       <NavBar instrument={ instrument } setInstrument={ setInstrument } />
 
-      {instrument === "drums" && (
-        <DrumSequencer />
-      )}
       {instrument === "keyboard" && (
         <KeyboardSequencer />
       )}
@@ -31,6 +28,9 @@ export default function App() {
       )}
       {instrument === "synths" && (
         <SynthSequencer />
+      )}
+      {instrument === "drums" && (
+        <DrumSequencer />
       )}
       
       <StrudelEditor />

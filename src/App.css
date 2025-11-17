@@ -146,14 +146,14 @@ i:hover {
 }
 
 .nav-bar .nav-section1 {
-  width: 10vw;
+  width: 15vw;
   display: flex;
   justify-content: start;
   padding-left: 6rem;;
 }
 
 .nav-bar .nav-section2 {
-  width: 30vw;
+  width: 25vw;
 }
 
 .nav-bar .nav-section3 {
