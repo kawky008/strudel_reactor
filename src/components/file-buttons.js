@@ -9,7 +9,7 @@ export default function FileHandler() {
         <div className="file-dropdown">
             <i className="fa-solid fa-bars fa-2x" onClick={() => setClicked(!clicked)}/>
             <div className="content" style={{display: clicked ? "block" : "none"}}>
-                <div className="option" onClick={() => resetAllStore()}>New</div>
+                <div className="option" onClick={() => resetAllStore()}>Create New</div>
                 <label  className="option">
                     Open JSON
                     <input type="file" accept="application/json" onChange={open} style={{ display: "none" }} />
