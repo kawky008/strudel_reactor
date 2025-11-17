@@ -1,5 +1,5 @@
-import addGuitarBar from "../../utils/add-guitar-bar";
-import deleteBar from "../../utils/delete-bar";
+import addGuitarBar from "../../utils/bar-handler/add-guitar-bar";
+import deleteBar from "../../utils/bar-handler/delete-bar";
 
 export default function GuitarBarButtons({instrument, update}) {
     return (

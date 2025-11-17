@@ -169,6 +169,39 @@ export const useGuitarStore = create((set, get) => ({
         });
     },
 
+    resetState: () => {
+        const initialStruct = () => Array.from({ length: 32 }, () => ({
+            note: "~",
+            gain: 1,
+            release: 1,
+        }));
+
+        set({
+            guitar: {
+                settings: {
+                    play: false,
+                    bank: "gm_acoustic_guitar_nylon",
+                    slow: 2,
+                    gain: 1,
+                },
+                c: { struct: initialStruct(), play: true, gain: 1 },
+                cs: { struct: initialStruct(), play: true, gain: 1 },
+                d: { struct: initialStruct(), play: true, gain: 1 },
+                ds: { struct: initialStruct(), play: true, gain: 1 },
+                e: { struct: initialStruct(), play: true, gain: 1 },
+                f: { struct: initialStruct(), play: true, gain: 1 },
+                fs: { struct: initialStruct(), play: true, gain: 1 },
+                g: { struct: initialStruct(), play: true, gain: 1 },
+                gs: { struct: initialStruct(), play: true, gain: 1 },
+                a: { struct: initialStruct(), play: true, gain: 1 },
+                as: { struct: initialStruct(), play: true, gain: 1 },
+                b: { struct: initialStruct(), play: true, gain: 1 },
+            }
+        });
+
+        console.log("Reseted guitar state")
+    },
+
     getGuitarStr: () => {
 
         /*

@@ -69,6 +69,94 @@ export const useDrumStore = create((set, get) => ({
         }))
     },
 
+    resetTrack: (track) => {
+        set((state) => {
+            const structLength = state.drums[track].struct.length;
+
+            const resetStruct = Array(structLength).fill("~");
+
+            return {
+                drums: {
+                    ...state.drums,
+                    [track]: {
+                        ...state.drums[track],
+                        struct: resetStruct,
+                        play: true,
+                        gain: 1,
+                    },
+                },
+            };
+        });
+    },
+
+    resetState: () => {
+        const initial = {
+            settings: {
+                play: false,
+                bank: "RolandTR808",
+                slow: 2,
+                gain: 1,
+            },
+            hihat: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            },
+            open_hihat: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            },
+            snare_drum: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            },
+            rim_shot: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            },
+            low_tom: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            },
+            middle_tom: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            },
+            high_tom: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            },
+            ride_cymbal: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            },
+            crash_cymbal: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            },
+            bass_drum: {
+                struct: Array(32).fill("~"),
+                play: true,
+                gain: 1
+            }
+        };
+
+        set(() => ({
+            drums: initial
+        }));
+
+        console.log("Reseted drums state")
+    },
+
+
     getDrumStr: () => {
     const { drums } = get();
     /*

@@ -1,5 +1,5 @@
-import addKeyboardBar from "../../utils/add-keyboard-bar";
-import deleteBar from "../../utils/delete-bar";
+import addKeyboardBar from "../../utils/bar-handler/add-keyboard-bar";
+import deleteBar from "../../utils/bar-handler/delete-bar";
 
 export default function KeyboardBarButtons({instrument, update}) {
     return (

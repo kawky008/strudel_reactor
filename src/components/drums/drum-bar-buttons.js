@@ -1,5 +1,5 @@
-import addDrumBar from "../../utils/add-drum-bar";
-import deleteBar from "../../utils/delete-bar";
+import addDrumBar from "../../utils/bar-handler/add-drum-bar";
+import deleteBar from "../../utils/bar-handler/delete-bar";
 
 export default function DrumBarButtons({instrument, update}) {
     return (

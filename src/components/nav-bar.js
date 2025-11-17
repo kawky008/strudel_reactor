@@ -1,10 +1,11 @@
+import FileHandler from "./file-buttons";
 import GlobalSettings from "./global-settings";
 
 export default function NavBar({ instrument, setInstrument }) {
     return (
         <div className="nav-bar">
             <div className="nav-section1">
-                
+                <FileHandler />
             </div>
 
             <div className="nav-section2">

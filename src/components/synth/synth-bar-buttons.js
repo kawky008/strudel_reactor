@@ -1,5 +1,5 @@
-import addSynthBar from "../../utils/add-synth-bar";
-import deleteBar from "../../utils/delete-bar";
+import addSynthBar from "../../utils/bar-handler/add-synth-bar";
+import deleteBar from "../../utils/bar-handler/delete-bar";
 
 export default function SynthBarButtons({instrument, update}) {
     return (

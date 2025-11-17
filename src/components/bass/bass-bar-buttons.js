@@ -1,5 +1,5 @@
-import addBassBar from "../../utils/add-bass-bar";
-import deleteBar from "../../utils/delete-bar";
+import addBassBar from "../../utils/bar-handler/add-bass-bar";
+import deleteBar from "../../utils/bar-handler/delete-bar";
 
 export default function BassBarButtons({instrument, update}) {
     return (
