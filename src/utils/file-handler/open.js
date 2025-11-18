@@ -15,7 +15,7 @@ export default async function open(event) {
             const data = JSON.parse(e.target.result);
 
             useBassStore.setState({ bass: data.bass });
-            useDrumStore.setState({ drum: data.drum });
+            useDrumStore.setState({ drums: data.drums });
             useGuitarStore.setState({ guitar: data.guitar });
             useKeyboardStore.setState({ keyboard: data.keyboard });
             useSynthStore.setState({ synth: data.synth });

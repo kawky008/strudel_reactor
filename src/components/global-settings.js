@@ -6,6 +6,7 @@ import { useKeyboardStore } from "../stores/use-keyboard-store";
 import { useGuitarStore } from "../stores/use-guitar-store";
 import { useBassStore } from "../stores/use-bass-store";
 import BPMSelector from "./selectors/bpm-selector";
+import { useSynthStore } from "../stores/use-synth-store";
 
 export default function GlobalSettings() {
     const { play, stop, proc } = useStrudelStore();
@@ -17,6 +18,7 @@ export default function GlobalSettings() {
     const updateKeyboard = useKeyboardStore((state) => state.updateKeyboard);
     const updateGuitar = useGuitarStore((state) => state.updateGuitar);
     const updateBass = useBassStore((state) => state.updateBass);
+    const updateSynth = useSynthStore((state) => state.updateSynth);
 
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -25,7 +27,8 @@ export default function GlobalSettings() {
         updateKeyboard("settings", {play: true});
         updateGuitar("settings", {play: true});
         updateBass("settings", {play: true});
-        // add keyboard, guitar, synths update here
+        updateSynth("settings", {play: true});
+
         proc?.();
         setIsPlaying(true);
         play?.();
@@ -36,6 +39,7 @@ export default function GlobalSettings() {
         updateKeyboard("settings", {play: false});
         updateGuitar("settings", {play: false});
         updateBass("settings", {play: false});
+        updateSynth("settings", {play: false});
 
         setIsPlaying(false);
         stop?.();

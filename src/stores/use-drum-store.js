@@ -9,52 +9,52 @@ export const useDrumStore = create((set, get) => ({
             gain: 1,
         },
         hihat: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         },
         open_hihat: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         },
         snare_drum: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         },
         rim_shot: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         },
         low_tom: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         },
         middle_tom: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         },
         high_tom: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         },
         ride_cymbal: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         },
         crash_cymbal: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         },
         bass_drum: {
-            struct: Array(32).fill("~"),
+            struct: Array.from({ length: 32 }, () => "~"),
             play: true,
             gain: 1
         }
@@ -73,7 +73,7 @@ export const useDrumStore = create((set, get) => ({
         set((state) => {
             const structLength = state.drums[track].struct.length;
 
-            const resetStruct = Array(structLength).fill("~");
+            const resetStruct = Array.from({ length: structLength }, () => "~");
 
             return {
                 drums: {
@@ -98,52 +98,52 @@ export const useDrumStore = create((set, get) => ({
                 gain: 1,
             },
             hihat: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             },
             open_hihat: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             },
             snare_drum: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             },
             rim_shot: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             },
             low_tom: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             },
             middle_tom: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             },
             high_tom: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             },
             ride_cymbal: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             },
             crash_cymbal: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             },
             bass_drum: {
-                struct: Array(32).fill("~"),
+                struct: Array.from({ length: 32 }, () => "~"),
                 play: true,
                 gain: 1
             }
